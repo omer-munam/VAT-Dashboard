@@ -1,23 +1,27 @@
 <?php
 session_start();
-class Vendor
+class Signup
     {
-        public function addVendor()
+        public function addUser()
         {
          
       include("includes/connection.php");
 
-            if(isset($_POST['vendorlogin'])){
+            if(isset($_POST['signup'])){
                 
-                    $title_ar=$_POST['title_ar'];
-                    $title_en=$_POST['title_en'];
+                    $fname=$_POST['fname'];
+                    $lname=$_POST['lname'];
                     $password=$_POST['password'];
                     $password1=$_POST['password1'];
-                    $phonenumber=$_POST['phonenumber'];
+                    $contact=$_POST['contact'];
                     $email=$_POST['email'];
+                    $address = $_POST['address'];
+                    $dob = $_POST['dob'];
+                    $occupation = $_POST['occupation'];
+                    $earnings = $_POST['earnings'];
 
                     
-                    $query_email ="SELECT email FROM stores WHERE email='$email'";
+                    $query_email ="SELECT email FROM users WHERE email='$email'";
                     $result_email = mysqli_query($conn,$query_email);
 
                      if (mysqli_num_rows($result_email) > 0) {
@@ -60,7 +64,12 @@ class Vendor
 
                 else{
                     $password=md5($password);
-          $query = "INSERT INTO stores(title_ar , title_en, email , password, phonenumber) VALUES('$title_ar', '$title_en', '$email','$password', '$phonenumber')";
+
+                    echo $dob;
+
+          $query = "INSERT INTO users(fname , lname, email ,address, dob, occupation, earnings, password, contact) VALUES('$fname', '$lname', '$email','$address', $dob, '$occupation', $earnings,'$password', '$contact')";
+
+
 
 
                     if($conn->query($query)===TRUE)
@@ -98,8 +107,8 @@ class Vendor
         }
     }
     }
-    $O = new Vendor;
-    $O->addVendor();
+    $O = new Signup;
+    $O->addUser();
   
 
 
@@ -110,7 +119,7 @@ class Vendor
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SignUp-Dalil Algahwa</title>
+    <title>SignUp-VAT Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -161,29 +170,65 @@ class Vendor
                         
                         <div id="Name_div">
                         <div class="form-gp">
-                            <label for="exampleInputEmail1">Name English</label>
-                            <input type="text" name="title_ar" id="exampleInputEmail1">
+                            <label for="exampleInputEmail1">First Name</label>
+                            <input type="text" name="fname" id="exampleInputEmail1">
                             <i class=""></i>
                             <div id="Name_error"></div>
                            </div>
-                        </div>
+                        </div>  
 
                         
-                          <div id="Phone_number_div">
+                          <div id="lName_div">
                          <div class="form-gp">
-                           <label for="exampleInputEmail1">Name Arabic</label>
-                            <input type="text" name="title_en" id="exampleInputEmail1">
+                           <label for="exampleInputEmail1">Last Name</label>
+                            <input type="text" name="lname" id="exampleInputEmail1">
                             <i class=""></i>
-                            <div id="Phone_number_error"></div>
+                            <div id="lname_error"></div>
                             </div>
                         </div>
 
                         <div id="emailaddress_div">
                         <div class="form-gp">
-                            <label for="exampleInputEmail1">Email Address </label>
+                            <label for="exampleInputEmail1">Email</label>
                             <input type="email" name="email" id="exampleInputEmail1">
                             <i class="ti-email"></i>
                             <div id="emailaddress_error"></div>
+                        </div>
+                        </div>
+
+                        <div id="address_div">
+                        <div class="form-gp">
+                            <label for="exampleInputEmail1">Address </label>
+                            <input type="text" name="address" id="exampleInputEmail1">
+                            <i class=""></i>
+                            <div id="address_error"></div>
+                        </div>
+                        </div>
+
+                        <div id="dob_div">
+                        <div class="form-gp">
+                            <label for="exampleInputEmail1">DOB </label>
+                            <input type="date" name="dob" id="exampleInputEmail1">
+                            <i class=""></i>
+                            <div id="dob_error"></div>
+                        </div>
+                        </div>
+
+                        <div id="occupation_div">
+                        <div class="form-gp">
+                            <label for="exampleInputEmail1">Occupation </label>
+                            <input type="text" name="occupation" id="exampleInputEmail1">
+                            <i class=""></i>
+                            <div id="occupation_error"></div>
+                        </div>
+                        </div>
+
+                        <div id="earnings_div">
+                        <div class="form-gp">
+                            <label for="exampleInputEmail1">Yearly Earnings </label>
+                            <input type="Number" name="earnings" id="exampleInputEmail1">
+                            <i class=""></i>
+                            <div id="earnings_error"></div>
                         </div>
                         </div>
 
@@ -207,12 +252,12 @@ class Vendor
                          
                          
                          
-                         <div id="country_div">
+                         <div id="contact_div">
                          <div class="form-gp">
                             <label for="exampleInputEmail1">Contact</label>
-                            <input type="text" name="phonenumber" id="exampleInputEmail1">
+                            <input type="text" name="contact" id="exampleInputEmail1">
                             <i class=""></i>
-                            <div id="country_error"></div>
+                            <div id="contact_error"></div>
                         </div>
                         </div>
 
@@ -228,7 +273,7 @@ class Vendor
                             </div> -->
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit" name="vendorlogin" type="submit">SIGN UP<i class="ti-arrow-right"></i></button><br>
+                            <button id="form_submit" name="signup" type="submit">SIGN UP<i class="ti-arrow-right"></i></button><br>
                             <button id="form_submit" name="signin" type="submit"><a href="login.php">SIGN IN</a><i class="ti-arrow-right"></i></button><br>
                             <div>
                            <!--  <a href="">Signup</a> -->
@@ -274,11 +319,13 @@ class Vendor
 </html>
 
 <script type="text/javascript">
-     var Name = document.forms['bform']['Name'];
-     var Phone_number = document.forms['bform']['Phone_number'];
-     var user_name = document.forms['bform']['user_name'];
-     var country = document.forms['bform']['country'];
-     var Location = document.forms['bform']['Location'];
+     var Name = document.forms['bform']['fname'];
+     var lName = document.forms['bform']['lname'];
+     var contact = document.forms['bform']['contact'];
+     var earnings = document.forms['bform']['earnings'];
+     var occupation = document.forms['bform']['occupation'];
+     var address = document.forms['bform']['address'];
+     var dob = document.forms['bform']['dob'];
      var emailaddress = document.forms['bform']['emailaddress'];
      var password = document.forms['bform']['password'];
      var password1 = document.forms['bform']['password1'];
@@ -287,13 +334,15 @@ class Vendor
 
      // selecting all error display elements
      var Name_error = document.getElementById('Name_error');
-     var Phone_number_error = document.getElementById('Phone_number_error');
-      var user_name_error = document.getElementById('user_name_error');
-      var country_error = document.getElementById('country_error');
-      var Location_error = document.getElementById('Location_error');
+     var lname_error = document.getElementById('lname_error');
+      var contact_error = document.getElementById('contact_error');
       var emailaddress_error = document.getElementById('emailaddress_error');
       var password_error = document.getElementById('password_error');
       var password1_error = document.getElementById('password1_error');
+      var earnings_error = document.getElementById('earnings_error');
+      var occupation_error = document.getElementById('occupation_error');
+      var dob_error = document.getElementById('dob_error');
+      var address_error = document.getElementById('address_error');
 
 
 
@@ -302,10 +351,12 @@ class Vendor
        // SETTING ALL EVENT LISTENERS
 
     Name.addEventListener('blur', NameVerify, true);
-    Phone_number.addEventListener('blur', Phone_numberVerify, true);
-    user_name.addEventListener('blur', user_nameVerify, true);
-    country.addEventListener('blur', countryVerify, true);
-    Location.addEventListener('blur', LocationVerify, true);
+    lName.addEventListener('blur', lNameVerify, true);
+    contact.addEventListener('blur', contactVerify, true);
+    earnings.addEventListener('blur', earningsVerify, true);
+    occupation.addEventListener('blur', occupationVerify, true);
+    address.addEventListener('blur', addressVerify, true);
+    dob.addEventListener('blur', dobVerify, true);
     emailaddress.addEventListener('blur', emailaddressVerify, true);
     password.addEventListener('blur', passwordVerify, true);
     password1.addEventListener('blur', password1Verify, true);
@@ -319,40 +370,56 @@ class Vendor
          if (Name.value == "") {
     // _Name.style.border = "1px solid red";
     document.getElementById('Name_div').style.color = "red";
-    Name_error.textContent = "Name Is Required";
+    Name_error.textContent = "First Name Is Required";
     Name.focus();
     return false;
   }
 
-  if (Phone_number.value == "") {
+  if (lName.value == "") {
     // _Name.style.border = "1px solid red";
-    document.getElementById('Phone_number_div').style.color = "red";
-    Phone_number_error.textContent = "Number Is Required";
-    Phone_number.focus();
+    document.getElementById('lName_div').style.color = "red";
+    lname_error.textContent = "Last Name Is Required";
+    lName.focus();
     return false;
   }
 
-    if (user_name.value == "") {
+  if (contact.value == "") {
     // _Name.style.border = "1px solid red";
-    document.getElementById('user_name_div').style.color = "red";
-    user_name_error.textContent = "UserName Is Required";
-    user_name.focus();
+    document.getElementById('contact_div').style.color = "red";
+    contact_error.textContent = "Number Is Required";
+    contact.focus();
     return false;
   }
 
-   if (country.value == "") {
+if (earnings.value == "") {
     // _Name.style.border = "1px solid red";
-    document.getElementById('country_div').style.color = "red";
-    country_error.textContent = "CountryName Is Required";
-    country.focus();
+    document.getElementById('earnings_div').style.color = "red";
+    earnings_error.textContent = "Earnings Is Required";
+    earnings.focus();
     return false;
   }
 
-   if (Location.value == "") {
+  if (occupation.value == "") {
     // _Name.style.border = "1px solid red";
-    document.getElementById('Location_div').style.color = "red";
-    Location_error.textContent = "Location Is Required";
-    Location.focus();
+    document.getElementById('occupation_div').style.color = "red";
+    occupation_error.textContent = "Occupation Is Required";
+    occupation.focus();
+    return false;
+  }
+
+  if (address.value == "") {
+    // _Name.style.border = "1px solid red";
+    document.getElementById('address_div').style.color = "red";
+    address_error.textContent = "Address Is Required";
+    address.focus();
+    return false;
+  }
+
+  if (dob.value == "") {
+    // _Name.style.border = "1px solid red";
+    document.getElementById('occupation_div').style.color = "red";
+    dob_error.textContent = "DOB Is Required";
+    dob.focus();
     return false;
   }
 
@@ -393,37 +460,57 @@ class Vendor
    return true;
   }}
 
-  function Phone_numberVerify() {
+  function lNameVerify() {
 
-    if (Phone_number.value != "") {
+ if (lName.value != "") {
    // shop_name.style.border = "1px solid #5cd3b4";
-   document.getElementById('Phone_number_div').style.color = "#5cd3b4";
-   Phone_number_error.innerHTML = "";
+   document.getElementById('lName_div').style.color = "#5cd3b4";
+   lName_error.innerHTML = "";
    return true;
   }}
 
-  function user_nameVerify(){
-  if (user_name.value != "") {
+  function contactVerify() {
+
+    if (contact.value != "") {
    // shop_name.style.border = "1px solid #5cd3b4";
-   document.getElementById('user_name_div').style.color = "#5cd3b4";
-   user_name_error.innerHTML = "";
+   document.getElementById('contact_div').style.color = "#5cd3b4";
+   contact.innerHTML = "";
    return true;
   }}
 
-  
-  function countryVerify(){
-  if (country.value != "") {
+  function addressVerify() {
+
+    if (address.value != "") {
    // shop_name.style.border = "1px solid #5cd3b4";
-   document.getElementById('country_div').style.color = "#5cd3b4";
-   country_error.innerHTML = "";
+   document.getElementById('address_div').style.color = "#5cd3b4";
+   address_error.innerHTML = "";
    return true;
   }}
 
-   function LocationVerify(){
-  if (Location.value != "") {
+  function dobVerify() {
+
+    if (dob.value != "") {
    // shop_name.style.border = "1px solid #5cd3b4";
-   document.getElementById('Location_div').style.color = "#5cd3b4";
-   Location_error.innerHTML = "";
+   document.getElementById('dob_div').style.color = "#5cd3b4";
+   dob_error.innerHTML = "";
+   return true;
+  }}
+
+  function earningsVerify() {
+
+    if (contact.value != "") {
+   // shop_name.style.border = "1px solid #5cd3b4";
+   document.getElementById('earnings_div').style.color = "#5cd3b4";
+   earnings_error.innerHTML = "";
+   return true;
+  }}
+
+  function occupationVerify() {
+
+    if (occupation.value != "") {
+   // shop_name.style.border = "1px solid #5cd3b4";
+   document.getElementById('occupation_div').style.color = "#5cd3b4";
+   occupation_error.innerHTML = "";
    return true;
   }}
 
