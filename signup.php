@@ -1,32 +1,32 @@
 <?php
 session_start();
 class Signup
+{
+    public function addUser()
     {
-        public function addUser()
-        {
-         
-      include("includes/connection.php");
+        include("includes/connection.php");
 
-            if(isset($_POST['signup'])){
-                
-                    $fname=$_POST['fname'];
-                    $lname=$_POST['lname'];
-                    $password=$_POST['password'];
-                    $password1=$_POST['password1'];
-                    $contact=$_POST['contact'];
-                    $email=$_POST['email'];
-                    $address = $_POST['address'];
-                    $dob = $_POST['dob'];
-                    $occupation = $_POST['occupation'];
-                    $earnings = $_POST['earnings'];
+        if (isset($_POST['signup'])) {
+            $fname=$_POST['fname'];
+            $lname=$_POST['lname'];
+            $password=$_POST['password'];
+            $password1=$_POST['password1'];
+            $contact=$_POST['contact'];
+            $email=$_POST['email'];
+            $address = $_POST['address'];
+            $dob = $_POST['dob'];
+            $occupation = $_POST['occupation'];
+            $earnings = $_POST['earnings'];
+
+            print("dob: $dob");
 
                     
-                    $query_email ="SELECT email FROM users WHERE email='$email'";
-                    $result_email = mysqli_query($conn,$query_email);
+            $query_email ="SELECT email FROM users WHERE email='$email'";
+            $result_email = mysqli_query($conn, $query_email);
 
-                     if (mysqli_num_rows($result_email) > 0) {
-                      // echo "<script>alert('Error email already exist!')</script>";
-                        echo "<script>
+            if (mysqli_num_rows($result_email) > 0) {
+                // echo "<script>alert('Error email already exist!')</script>";
+                echo "<script>
 
                  setTimeout(function() {
         $.bootstrapGrowl('Error email already exist', {
@@ -40,12 +40,10 @@ class Signup
 
            
             </script>";
-                  }
-
-                    elseif ($password!=$password1) {
+            } elseif ($password!=$password1) {
                         
                         // echo "<script>alert('password does not match')</script>";
-                       echo "<script>
+                echo "<script>
 
                  setTimeout(function() {
         $.bootstrapGrowl('password does not match', {
@@ -59,23 +57,14 @@ class Signup
 
            
             </script>";
+            } else {
+                $password=md5($password);
 
-                    }
+                $query = "INSERT INTO users (fname , lname, email, address, dob, occupation, earnings, password, contact) VALUES ('$fname', '$lname', '$email','$address', STR_TO_DATE('$dob', '%Y-%m-%d'), '$occupation', $earnings,'$password', '$contact')";
 
-                else{
-                    $password=md5($password);
-
-                    echo $dob;
-
-          $query = "INSERT INTO users(fname , lname, email ,address, dob, occupation, earnings, password, contact) VALUES('$fname', '$lname', '$email','$address', $dob, '$occupation', $earnings,'$password', '$contact')";
-
-
-
-
-                    if($conn->query($query)===TRUE)
-        {
-          header('location:login.php');
-            echo "<script>
+                if ($conn->query($query)===true) {
+                    header('location:login.php');
+                    echo "<script>
 
                  setTimeout(function() {
         $.bootstrapGrowl('Sign Up Successfully But your account is in pending needs admin approval', {
@@ -89,24 +78,18 @@ class Signup
 
            
             </script>";
-        }
-        else
-        {
-            echo "error".$query."<br>".$conn->error;
-        }
-        
+                } else {
+                    echo "error".$query."<br>".$conn->error;
+                }
             }
 
 
-    if(isset($_POST['signin'])){
-                
-                   header('location:login.php');     
-        
+            if (isset($_POST['signin'])) {
+                header('location:login.php');
             }
-        
         }
     }
-    }
+}
     $O = new Signup;
     $O->addUser();
   
@@ -206,12 +189,12 @@ class Signup
                         </div>
 
                         <div id="dob_div">
-                        <div class="form-gp">
-                            <label for="exampleInputEmail1">DOB </label>
-                            <input type="date" name="dob" id="exampleInputEmail1">
-                            <i class=""></i>
-                            <div id="dob_error"></div>
-                        </div>
+                          <div class="form-gp">
+                              <label for="exampleInputEmail1">DOB</label>
+                              <input type="date" name="dob" id="exampleInputEmail1">
+                              <i class=""></i>
+                              <div id="dob_error"></div>
+                          </div>
                         </div>
 
                         <div id="occupation_div">
