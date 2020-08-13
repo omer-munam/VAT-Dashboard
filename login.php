@@ -3,84 +3,34 @@ session_start();
 
 
 class vendor
-
 {
+    public function login()
+    {
+        include("includes/connection.php");
 
- public function login()
-
-{
-
-  include("includes/connection.php");
-
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-  header('location:index.php');
-  
-  
-}
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
+            header('location:index.php');
+        }
 
   
-     if (isset($_POST["signin"])) {
-     
-     $emailaddress =$_POST["emailaddress"];
-     $password = md5($_POST["password"]);
+        if (isset($_POST["signin"])) {
+            $emailaddress =$_POST["emailaddress"];
+            $password = md5($_POST["password"]);
 
-     $query = "SELECT * FROM stores WHERE email = '$emailaddress' && password = '$password' ";
-     $result=mysqli_query($conn,$query);
+            $query = "SELECT * FROM users WHERE email = '$emailaddress' && password = '$password' ";
+            $result=mysqli_query($conn, $query);
 
-     if (mysqli_num_rows($result)==1) 
+            if ($result) {
+                if (mysqli_num_rows($result)==1) {
+                    while ($row = mysqli_fetch_array($result)) {
+                        $_SESSION['loggedin'] = true;
+                        $_SESSION['id'] = $row['id'];
+                        $_SESSION['name'] = $row['fname'] . " " . $row['lname'];
 
-        {
-
-                while($row = mysqli_fetch_array($result))
-                {
-                    $admin_approved =  $row['admin_approved'];
-                    $_SESSION['id'] = $vendor['id'];
-                    if($admin_approved==1)
-                    {
-                        $_SESSION['isvendor']=TRUE;
-                        $_SESSION['isvendor'] = 1 ;
-                        $_SESSION['loggedin'] = 1;
-                        $result=mysqli_query($conn,$query);
-                        $vendor=mysqli_fetch_array($result);    
-                        $_SESSION['id'] = $vendor['id'];
-                        $_SESSION['loggedin']= true;
-                        $_SESSION['vendorname'] = $vendor['title_en'];
-                      
-                        header("location: index.php");
-
-                        // ?vendor=".$row["user_name"]
-                        
+                        header("location: AllProducts.php");
                     }
-                    
-                    else
-                    {
-                        $error1 = "You Are Not Approved";
-                        // echo "<script>alert('Sorry!,You Are Not Approved')</script>";
-                        echo "<script>
-
-                 setTimeout(function() {
-        $.bootstrapGrowl('Sorry!, You Are Not Approved', {
-            type: 'danger',
-            align: 'right',
-            width: 400,
-            stackup_spacing: 30
-        });
-    }, 1000);
-
-
-           
-            </script>";
-                    }                
-                
-                }
-            }
-
-       
-
-     else
-
-     {
-       echo "<script>
+                } else {
+                    echo "<script>
 
                  setTimeout(function() {
         $.bootstrapGrowl('Incorrect Email Or Password', {
@@ -90,22 +40,19 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
             stackup_spacing: 30
         });
     }, 3000);
-
-
-           
             </script>";
-     }
-
- }
- if (isset($_POST['ResetPassword'])) {
-    $Email = $_POST["Email"];
-    $query="SELECT * FROM vendor_signup WHERE emailaddress ='$Email'";
-    $run =mysqli_query($conn,$query);
-    $check_c=mysqli_num_rows($run);
-    $row_c=mysqli_fetch_array($run);
-    $Name=$row_c['Name'];
-    if ($check_c==0) {
-        echo "<script>  setTimeout(function() {
+                }
+            }
+        }
+        if (isset($_POST['ResetPassword'])) {
+            $Email = $_POST["Email"];
+            $query="SELECT * FROM users WHERE emailaddress ='$Email'";
+            $run =mysqli_query($conn, $query);
+            $check_c=mysqli_num_rows($run);
+            $row_c=mysqli_fetch_array($run);
+            $Name=$row_c['Name'];
+            if ($check_c==0) {
+                echo "<script>  setTimeout(function() {
         $.bootstrapGrowl('Email does not exist', {
             type: 'danger',
             align: 'right',
@@ -113,14 +60,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
             stackup_spacing: 30
         });
     }, 1000);</script>";
-    }
-
-    else
-    {        
-        $to = $Email;
-        $subject = 'Recently '.$Name;
-        $message = mt_rand(1000,9999);
-        $emailmsg ='<head>
+            } else {
+                $to = $Email;
+                $subject = 'Recently '.$Name;
+                $message = mt_rand(1000, 9999);
+                $emailmsg ='<head>
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -251,19 +195,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
 
 
 
-        $headers = 'From: no-reply@icesketch.com' . "\r\n" .
+                $headers = 'From: no-reply@icesketch.com' . "\r\n" .
        'Reply-To: <no-reply@icesketch.com>' . "\r\n" .
        'X-Mailer: PHP/' . phpversion();
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        if(mail($to, $subject, $emailmsg, $headers))
-        {
-
-            $query = "UPDATE vendor SET Password='$message',Approval='1' WHERE Email='$Email'";
-            if($conn->query($query)===TRUE){
-                echo "Fayyaz";
-                echo "<script>  setTimeout(function() {
+                if (mail($to, $subject, $emailmsg, $headers)) {
+                    $query = "UPDATE users SET Password='$message',Approval='1' WHERE Email='$Email'";
+                    if ($conn->query($query)===true) {
+                        echo "Fayyaz";
+                        echo "<script>  setTimeout(function() {
         $.bootstrapGrowl('The Password Has Been Sent Successfully', {
             type: 'info',
             align: 'right',
@@ -271,23 +213,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
             stackup_spacing: 30
         });
     }, 1000);</script>";
-}
-            else{
-                echo "error".$query."<br>".$conn->error;
-            } 
-    }
-}
-}
-
- if(isset($_POST['signup'])){
-                
-                   header('location:signup.php');     
-        
+                    } else {
+                        echo "error".$query."<br>".$conn->error;
+                    }
+                }
             }
+        }
 
-
-}
-
+        if (isset($_POST['signup'])) {
+            header('location:signup.php');
+        }
+    }
 }
 
 
