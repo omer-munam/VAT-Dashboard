@@ -54,20 +54,20 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.php"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="index.php"><img src="assets/images/icon/vat.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
+                            <!-- <li class="active">
                                 <a href="index.php" aria-expanded="true"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
                                 
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Products</span></a>
-                                <ul class="collapse">
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Form 2</span></a>
+                                <!-- <ul class="collapse">
                                     <li><a href="AllProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Products</span></a>
                                     </li>
                                     <li><a href="AddProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Add Products</span></a></li>
@@ -110,12 +110,12 @@
                                     
                                 </ul>
                             </li>
-                         
+                          -->
                          
                                
                          
                             
-                            <li>
+                            <!-- <li>
                                 <a href="ReturnedManagement.php" aria-expanded="true"><i class="fa fa-arrow-left"></i><span>Returned Management</span></a>
                             </li>
                             <li>
@@ -126,7 +126,7 @@
                                     <li><a href="ProductReports.php"><i class="fa fa-circle fs_i"></i> <span class="menu-title">Product Reports</span></a></li>
                                     <li><a href="OrderReports.php"><i class="fa fa-circle fs_i"></i><span class="menu-title"> Order Reports</span></a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </nav>
                 </div>

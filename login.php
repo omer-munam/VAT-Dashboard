@@ -286,7 +286,7 @@ $O->login();
                 <form action="" method="POST" name="bform" onsubmit="return Validate()">
                     <div class="login-form-head">
                         <div>
-                            <img src="assets/images/icon/logo.png">
+                            <img src="assets/images/icon/vat.png">
                         </div>
                        
                     </div>
