@@ -27,7 +27,7 @@ class vendor
                         $_SESSION['id'] = $row['id'];
                         $_SESSION['name'] = $row['fname'] . " " . $row['lname'];
 
-                        header("location: AllProducts.php");
+                        header("location: index.php");
                     }
                 } else {
                     echo "<script>

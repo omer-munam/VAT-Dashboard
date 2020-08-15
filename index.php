@@ -6,18 +6,38 @@ include("includes/connection.php");
        header('location:login.php');
        die();
    }
-       $id = $_SESSION['id'];
-    //   $query1="SELECT * FROM store_locations WHERE storeid='$id' AND admin_approved='1'";
-    //   $query3="SELECT ps.* FROM products_stores ps INNER JOIN products ON ps.productid=products.id WHERE products.admin_approved='1' AND ps.storeid='$id' GROUP BY ps.productid";
-    //   $query2="SELECT * FROM orders WHERE storeid='$id'";
+    $id = $_SESSION['id'];
+    if(isset($_POST['form1_submit'])){
 
-    //   $result1=mysqli_query($conn,$query1);
-    //   $result2=mysqli_query($conn,$query2);
-    //   $result3=mysqli_query($conn,$query3);
+      mysqli_set_charset($conn,"utf8");            
+      
+      $inv_num = $_POST['invoice_num'];
+      $prod_name = $_POST['prod_name'];
+      $prod_price = $_POST['prod_price'];
+      $prod_qty = $_POST['prod_qty'];
+      $invoice_type = $_POST['invoice_type'];
+      $invoice_date = $_POST['invoice_date'];
+            
+      $query = "INSERT INTO invoices(user_id,inv_number, prod_name, prod_price,prod_qty,inv_type, inv_date) VALUES('$id', '$inv_num', '$prod_name','$prod_price','$prod_qty','$invoice_type',STR_TO_DATE('$invoice_date', '%Y-%m-%d'))";
 
-    //   $row_count1=mysqli_num_rows($result1);
-    //   $row_count2=mysqli_num_rows($result2);
-    //   $row_count3=mysqli_num_rows($result3);
+     
+      if($conn->query($query)===TRUE){
+        echo "<script>setTimeout(function() {
+          $.bootstrapGrowl('Invoice Added Successfuly!', {
+              type: 'success',
+              align: 'right',
+              width: 400,
+              stackup_spacing: 30
+          });
+      }, 3000);</script>";
+      }
+
+      else{
+          echo "error".$query."<br>".$conn->error;
+      }
+          
+        
+      }
 
     include('includes/header.php');
 ?>
@@ -31,7 +51,7 @@ include("includes/connection.php");
                     <!-- <h4 class="page-title pull-left">Dashboard</h4> -->
                     <ul class="breadcrumbs pull-left">
                         <li><a href="index.php">Home</a></li>
-                        <!-- <li><span>Dashboard</span></li> -->
+                        <li><span>Form 1</span></li>
                     </ul>
                 </div>
             </div>
@@ -48,65 +68,26 @@ include("includes/connection.php");
     </div>
     <br>
 
-    <!-- <div class="sales-report-area mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="single-report mb-xs-30">
-                    <div class="s-report-inner pr--20 pt--30 mb-3">
-                        <div class="icon"><i class="fa fa-user"></i></div>
-                        <div class="s-report-title d-flex justify-content-between">
-                            <h4 class="header-title mb-0" style="font-size: 28px;">Outlets</h4>
-                        </div>
-                        <div class="d-flex justify-content-between pb-2">
-                            <h2>
-                                <?php //echo $row_count1;?>
-                            </h2>
-                        </div>
-                    </div>
-                    <canvas id="coin_sales1" height="100"></canvas>
+    <form action="index.php" method="POST" class="form-horizontal"  enctype="multipart/form-data" onsubmit="return Validate()" name="bform" id="uploadForm" >
+
+    <div class="col-md-8">
+        <div class="single-report">
+            <div class="s-report-inner pr--20 pt--30 mb-3">
+                
+                <div class="s-report-title d-flex justify-content-center">
+                    <h4 class="header-title mb-0" style="font-size: 28px;">Form 1</h4>
                 </div>
-            </div> -->
-            <!-- <div class="col-md-4">
-                <div class="single-report mb-xs-30">
-                    <div class="s-report-inner pr--20 pt--30 mb-3">
-                        <div class="icon"><i class="fa fa-users"></i></div>
-                        <div class="s-report-title d-flex justify-content-between">
-                            <h4 class="header-title mb-0" style="font-size: 28px;">Orders</h4>
-                        </div>
-                        <div class="d-flex justify-content-between pb-2">
-                            <h2><?php //echo $row_count2;?></h2>
-                        </div>
-                    </div>
-                    <canvas id="coin_sales2" height="100"></canvas>
-                </div>
-            </div> -->
-            <div class="col-md-8">
-                <div class="single-report">
-                    <div class="s-report-inner pr--20 pt--30 mb-3">
-                        
-                        <div class="s-report-title d-flex justify-content-center">
-                            <h4 class="header-title mb-0" style="font-size: 28px;">Form 1</h4>
-                        </div>
-                        <div class="d-flex justify-content-center pb-2">
-                            <h2><?php //echo $row_count3;?></h2>
-                            <div class="form-group">
+                <!-- <div class="d-flex justify-content-center pb-2"> -->
+                    <!-- <h2><?php //echo $row_count3;?></h2> -->
+                    <div class="form-group">
         <div id="product_name_div">
-            <!-- <label class="col-xs-6">Address<span class="validatestar">*</span></label>
-            <div class="col-xs-6">
-                  <input type="text" onClick="window.location.href='googlemap.php'" required class="form-control" value="<?php echo $_GET['place_address']; ?>" name="address" >
-                <div id="product_name_error"></div>
-              </div>
-            </div>          
-          </div>
-          <input type="hidden" value="<?php echo $location ?>" class="form-control" name="location">
-          <input type="hidden" value="<?php echo $longitude ?>" class="form-control" name="longitude">
-          <input type="hidden" value="<?php echo $latitude ?>" class="form-control" name="latitude"> -->
+
       
           <div class="form-group">
         <div id="product_name_div">
-            <label class="col-xs-6">Title in arabic<span class="validatestar">*</span></label>
+            <label class="col-xs-6">Invoice Number<span class="validatestar">*</span></label>
             <div class="col-xs-6">
-                  <input type="text" required class="form-control" name="title_ar" >
+                  <input type="text" required class="form-control" name="invoice_num" >
                 <div id="product_name_error"></div>
               </div>
             </div>          
@@ -114,9 +95,9 @@ include("includes/connection.php");
 
           <div class="form-group">
         <div id="product_name_div">
-            <label class="col-xs-6">Title in English<span class="validatestar">*</span></label>
+            <label class="col-xs-6">Product Name<span class="validatestar">*</span></label>
             <div class="col-xs-6">
-                  <input type="text" required class="form-control" name="title_en" >
+                  <input type="text" required class="form-control" name="prod_name" >
                 <div id="product_name_error"></div>
               </div>
             </div>          
@@ -124,9 +105,9 @@ include("includes/connection.php");
 
           <div class="form-group">
           <div id="product_name_div">
-            <label class="col-xs-6">Images<span class="validatestar">*</span></label>
+            <label class="col-xs-6">Product Price<span class="validatestar">*</span></label>
             <div class="col-xs-6">
-                  <input type="file" required class="form-control" name="image" >
+                  <input type="Number" step="0.01" required class="form-control" name="prod_price" >
                 <div id="product_name_error"></div>
               </div>
             </div>          
@@ -136,9 +117,9 @@ include("includes/connection.php");
 
           <div class="form-group">
               <div id="product_name_div">
-            <label class="col-xs-6">Minimum Delivery<span class="validatestar">*</span></label>
+            <label class="col-xs-6">Product Quantity<span class="validatestar">*</span></label>
             <div class="col-xs-6">
-                  <input type="text" required class="form-control" name="minimum_del" >
+                  <input type="Number" required class="form-control" name="prod_qty" >
                 <div id="product_name_error"></div>
               </div>
             </div>          
@@ -146,11 +127,11 @@ include("includes/connection.php");
           
           <div class="form-group">
         <div id="product_name_div">
-            <label class="col-xs-6">Status<span class="validatestar">*</span></label>
+            <label class="col-xs-6">Invoice Type<span class="validatestar">*</span></label>
             <div class="col-xs-6">
-                  <select name="status" required id="status" style="height: 40px" class="form-control">
-                      <option value="0">Offline</option>
-                      <option value="1">Available</option>
+                  <select name="invoice_type" required id="invoice_type" style="height: 40px" class="form-control">
+                      <option value="Buying">Buying Invoice</option>
+                      <option value="Selling">Selling Invoice</option>
                   </select>
                 <div id="product_name_error"></div>
               </div>
@@ -159,16 +140,16 @@ include("includes/connection.php");
 
           <div class="form-group">
         <div id="product_name_div">
-            <label class="col-xs-6">Radius<span class="validatestar">*</span></label>
+            <label class="col-xs-6">Invoice Date<span class="validatestar">*</span></label>
             <div class="col-xs-6">
-                  <input type="text" required class="form-control" name="radius" >
+                  <input type="Date" required class="form-control" name="invoice_date" >
                 <div id="product_name_error"></div>
               </div>
             </div>          
           </div>
           
             <div style="text-align: center;">
-              <button type="submit" class="btn btn-secondary btn-md" name="publish123">Add</button>
+              <button type="submit" class="btn btn-secondary btn-md" name="form1_submit">Submit</button>
 
             </div>
 
@@ -180,6 +161,7 @@ include("includes/connection.php");
                     <canvas  height="100"></canvas>
                 </div>
             </div>
+          </form>
         </div>
     </div>
 </div>
