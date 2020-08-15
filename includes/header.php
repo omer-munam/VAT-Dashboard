@@ -61,12 +61,11 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <!-- <li class="active">
-                                <a href="index.php" aria-expanded="true"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
-                                
-                            </li> -->
+                            <li class="active">
+                                <a href="index.php" aria-expanded="true"><i class="fa fa-dashboard"></i><span>Form 1</span></a>
+                            </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Form 1</span></a>
+                                <!-- <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Form 1</span></a> -->
                                 <!-- <ul class="collapse">
                                     <li><a href="AllProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Products</span></a>
                                     </li>
