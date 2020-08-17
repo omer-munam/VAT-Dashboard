@@ -52,7 +52,9 @@ include("includes/connection.php");
                     <ul class="breadcrumbs pull-left">
                         <li><a href="index.php">Home</a></li>
                         <li><span>Form 1</span></li>
+                        
                     </ul>
+                   
                 </div>
             </div>
             <div class="col-sm-6 clearfix">
@@ -76,7 +78,9 @@ include("includes/connection.php");
                 
                 <div class="s-report-title d-flex justify-content-center">
                     <h4 class="header-title mb-0" style="font-size: 28px;">Form 1</h4>
+                    
                 </div>
+                
                 <!-- <div class="d-flex justify-content-center pb-2"> -->
                     <!-- <h2><?php //echo $row_count3;?></h2> -->
                     <div class="form-group">
