@@ -66,7 +66,7 @@
                                 
                             </li> -->
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Form 1</span></a>
+                                <a href="index.php" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Form 1</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-product-hunt"></i> <span>Invoices</span></a>
