@@ -87,11 +87,11 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">All Products</h4>
+                            <h4 class="page-title pull-left">Invoices</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
-                                <li><span>Products / </span></li>
-                                <li><span>All Products</span></li>
+                                <li><span>Invoices / </span></li>
+                                <li><span></span></li>
                             </ul>
                         </div>
                     </div>
@@ -122,10 +122,13 @@
                      <table id="example" class="table table-striped table-bordered">
        <thead>
            <tr>
-                               <th width="100px"> Outlet Name</th>
-                           <th> Product Name In Arabic </th>
-                           <th> Product Name In English </th>
-                           <th style="text-align: center;width:200px""> Action</th>
+                               <th width="100px"> Invoice Number</th>
+                           <th> Product Name </th>
+                           <th> Product Price </th>
+                           
+                           <th style="text-align: center;width:200px""> Product Quantity</th>
+                           <th> Invoice Type </th>
+                           <th> Invoice Date </th>
                            </tr>
        </thead>
        <tbody>
