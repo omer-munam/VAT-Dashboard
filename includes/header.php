@@ -61,16 +61,16 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="index.php" aria-expanded="true"><i class="fa fa-dashboard"></i><span>Form 1</span></a>
+                            <li>
+                                <a href="index.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Form 1</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-product-hunt"></i> <span>Invoices</span></a>
                             
                             <ul class="collapse">
-                                    <li><a href="AllProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Selling Invoices</span></a>
+                                    <li><a href="SellingInvoices.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Selling Invoices</span></a>
                                     </li>
-                                    <li><a href="AllProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Buying Invoices</span></a></li>
+                                    <li><a href="BuyingInvoices.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Buying Invoices</span></a></li>
                                 </ul>
 
                                 <!-- <ul class="collapse">

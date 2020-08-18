@@ -17,10 +17,10 @@ class Signup
             $dob = $_POST['dob'];
             $occupation = $_POST['occupation'];
             $earnings = $_POST['earnings'];
+            $vatpin = $_POST['vatpin'];
 
-            print("dob: $dob");
 
-                    
+
             $query_email ="SELECT email FROM users WHERE email='$email'";
             $result_email = mysqli_query($conn, $query_email);
 
@@ -38,10 +38,10 @@ class Signup
     }, 1000);
 
 
-           
+
             </script>";
             } elseif ($password!=$password1) {
-                        
+
                         // echo "<script>alert('password does not match')</script>";
                 echo "<script>
 
@@ -55,12 +55,12 @@ class Signup
     }, 1000);
 
 
-           
+
             </script>";
             } else {
                 $password=md5($password);
 
-                $query = "INSERT INTO users (fname , lname, email, address, dob, occupation, earnings, password, contact) VALUES ('$fname', '$lname', '$email','$address', STR_TO_DATE('$dob', '%Y-%m-%d'), '$occupation', $earnings,'$password', '$contact')";
+                $query = "INSERT INTO users (fname , lname, email, address, dob, occupation, earnings, password, contact, vat_pin) VALUES ('$fname', '$lname', '$email','$address', STR_TO_DATE('$dob', '%Y-%m-%d'), '$occupation', $earnings,'$password', '$contact', '$vatpin')";
 
                 if ($conn->query($query)===true) {
                     header('location:login.php');
@@ -76,7 +76,7 @@ class Signup
     }, 5000);
 
 
-           
+
             </script>";
                 } else {
                     echo "error".$query."<br>".$conn->error;
@@ -92,7 +92,7 @@ class Signup
 }
     $O = new Signup;
     $O->addUser();
-  
+
 
 
 ?>
@@ -147,10 +147,10 @@ class Signup
                         <div>
                             <img src="assets/images/icon/vat.png">
                         </div>
-                       
+
                     </div>
                     <div class="login-form-body">
-                        
+
                         <div id="Name_div">
                         <div class="form-gp">
                             <label for="exampleInputEmail1">First Name</label>
@@ -158,9 +158,9 @@ class Signup
                             <i class=""></i>
                             <div id="Name_error"></div>
                            </div>
-                        </div>  
+                        </div>
 
-                        
+
                           <div id="lName_div">
                          <div class="form-gp">
                            <label for="exampleInputEmail1">Last Name</label>
@@ -223,7 +223,7 @@ class Signup
                             <div id="password_error"></div>
                         </div>
                         </div>
-                        
+
                         <div id="password1_div">
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Confirm Password</label>
@@ -232,9 +232,19 @@ class Signup
                              <div id="password1_error"></div>
                         </div>
                         </div>
-                         
-                         
-                         
+
+
+                        <div id="pin_div">
+                        <div class="form-gp">
+                            <label for="exampleInputPassword1">VAT PIN (XXXX)</label>
+                            <input type="text" name="vatpin" maxlength="4" pattern="[0-9]{4}$" id="exampleInputPassword1">
+                            <i class="ti-lock"></i>
+                             <div id="pin_error"></div>
+                        </div>
+                        </div>
+
+
+
                          <div id="contact_div">
                          <div class="form-gp">
                             <label for="exampleInputEmail1">Contact</label>
@@ -260,11 +270,11 @@ class Signup
                             <button id="form_submit" name="signin" type="submit"><a href="login.php">SIGN IN</a><i class="ti-arrow-right"></i></button><br>
                             <div>
                            <!--  <a href="">Signup</a> -->
-                                
+
                             </div>
-                          
+
                         </div>
-                       
+
                     </div>
                 </form>
             </div>
@@ -312,6 +322,7 @@ class Signup
      var emailaddress = document.forms['bform']['emailaddress'];
      var password = document.forms['bform']['password'];
      var password1 = document.forms['bform']['password1'];
+     var vatpin = document.forms['bform']['vatpin'];
 
 
 
@@ -326,6 +337,7 @@ class Signup
       var occupation_error = document.getElementById('occupation_error');
       var dob_error = document.getElementById('dob_error');
       var address_error = document.getElementById('address_error');
+      var vatpin_error = document.getElementById('vatpin_error');
 
 
 
@@ -343,6 +355,7 @@ class Signup
     emailaddress.addEventListener('blur', emailaddressVerify, true);
     password.addEventListener('blur', passwordVerify, true);
     password1.addEventListener('blur', password1Verify, true);
+    vatpin.addEventListener('blur', vatpinVerify, true);
 
 
 
@@ -363,6 +376,13 @@ class Signup
     document.getElementById('lName_div').style.color = "red";
     lname_error.textContent = "Last Name Is Required";
     lName.focus();
+    return false;
+  }
+
+  if (vatpin.value == "") {
+    document.getElementById('pin_div').style.color = "red";
+    vatpin_error.textContent = "VAT PIN is Required";
+    vatpin.focus();
     return false;
   }
 
@@ -431,7 +451,7 @@ if (earnings.value == "") {
   }
 
 
-  
+
     }
 
     function NameVerify() {
@@ -442,6 +462,12 @@ if (earnings.value == "") {
    Name_error.innerHTML = "";
    return true;
   }}
+
+  function vatpinVerify(){
+    document.getElementById('pin_div').style.color = "#5cd3b4";
+   vatpin_error.innerHTML = "";
+   return true;
+  }
 
   function lNameVerify() {
 
