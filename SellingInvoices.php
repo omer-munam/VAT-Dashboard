@@ -35,7 +35,7 @@
                             <h4 class="page-title pull-left">Selling Invoices</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
-                                <li><span>Invoices / </span></li>
+                                <li><a href="#"><span>Invoices</span></a></li>
                                 <li><span>Selling</span></li>
                             </ul>
                         </div>

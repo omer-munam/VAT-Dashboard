@@ -38,7 +38,7 @@
                             <h4 class="page-title pull-left">Buying Invoices</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Home</a></li>
-                                <li><span>Invoices / </span></li>
+                                <li><a href="#"><span>Invoices</span></a></li>
                                 <li><span>Buying</span></li>
                             </ul>
                         </div>
@@ -107,10 +107,10 @@
                            <td style="background-color: #ffffff"><?php echo  $inv_type ?></td>
                            <td style="background-color: #ffffff"><?php echo  $inv_date ?></td>
 
-                           <td style="background-color: #ffffff"><!-- Button trigger modal -->
-<button type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete">
-</td>
-</tr>
+                            <td style="background-color: #ffffff"><!-- Button trigger modal -->
+                              <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete">
+                            </td>
+                        </tr>
 <?php }} ?>
        </tbody>
 

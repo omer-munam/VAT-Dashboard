@@ -26,6 +26,7 @@ class vendor
                         $_SESSION['loggedin'] = true;
                         $_SESSION['id'] = $row['id'];
                         $_SESSION['name'] = $row['fname'] . " " . $row['lname'];
+                        $_SESSION['VAT_pin'] = $row['vat_pin'];
 
                         header("location: index.php");
                     }

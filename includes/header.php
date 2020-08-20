@@ -44,9 +44,9 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- preloader area start -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="loader"></div>
-    </div>
+    </div> -->
     <!-- preloader area end -->
     <!-- page container area start -->
     <div class="page-container">
@@ -65,74 +65,21 @@
                                 <a href="index.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Form 1</span></a>
                             </li>
                             <li>
+                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-product-hunt"></i> <span>Form 2</span></a>
+                                <ul class="collapse">
+                                    <li><a href="SellingForm2.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Selling</span></a>
+                                    </li>
+                                    <li><a href="BuyingForm2.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Buying</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-product-hunt"></i> <span>Invoices</span></a>
-                            
-                            <ul class="collapse">
+                                <ul class="collapse">
                                     <li><a href="SellingInvoices.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Selling Invoices</span></a>
                                     </li>
                                     <li><a href="BuyingInvoices.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Buying Invoices</span></a></li>
                                 </ul>
-
-                                <!-- <ul class="collapse">
-                                    <li><a href="AllProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Products</span></a>
-                                    </li>
-                                    <li><a href="AddProducts.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Add Products</span></a></li>
-                                </ul>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-list-alt"></i> <span>Category</span></a>
-                                <ul class="collapse">
-                                    <li><a href="AllCategories.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Categories</span></a></li>
-                                    <li><a href="AddCategories.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Add Categories</span></a></li>
-                                    <li><a href="AllSubCategories.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Subcategories</span></a></li>
-                                    <li><a href="AddSubCategories.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Add Subcategories</span></a></li>
-                                </ul>
-                            </li>
-                           
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-shopping-cart"></i> <span>Outlet</span></a>
-                                <ul class="collapse">
-                                    <li><a href="AllShop.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Outlets</span></a></li>
-                                    <li><a href="AddShop.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Add Outlet</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-first-order"></i> <span>Order</span></a>
-                                <ul class="collapse">
-                                    <li><a href="AllOrder.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">All Order</span></a></li>
-                                     <li><a href="PendingCommissions.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Pending Commission</span></a></li>
-                                   <li><a href="PaidCommissions.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Paid Commission</span></a></li>
-                                </ul>
-                           
-                           
-                                         
-                            <li>
-                                <a href="#" aria-expanded="true"><i class="fa fa-users"></i><span>Profile Settings</span></a>
-                                <ul class="collapse">
-                                    <li><a href="ManageProfile.php"><i class="fa fa-circle fs_i"></i><span class="menu-title">Manage Profile</span></a></li>
-                                    
-                                    <li><a href="ManagePhones.php"><i class="fa fa-circle fs_i"></i><span class="menu-title">Manage Phones</span></a></li> 
-
-                                    
-                                </ul>
-                            </li>
-                          -->
-                         
-                               
-                         
-                            
-                            <!-- <li>
-                                <a href="ReturnedManagement.php" aria-expanded="true"><i class="fa fa-arrow-left"></i><span>Returned Management</span></a>
-                            </li>
-                            <li>
-                                <a href="#" aria-expanded="true"><i class="fa fa-file-text"></i> <span>Reports</span></a>
-                                <ul class="collapse">
-                                    <li><a href="CustomerReports.php"><i class="fa fa-circle fs_i"></i><span class="menu-title"> Customer Reports</span></a></li>
-                                    
-                                    <li><a href="ProductReports.php"><i class="fa fa-circle fs_i"></i> <span class="menu-title">Product Reports</span></a></li>
-                                    <li><a href="OrderReports.php"><i class="fa fa-circle fs_i"></i><span class="menu-title"> Order Reports</span></a></li>
-                                </ul>
-                            </li> -->
                         </ul>
                     </nav>
                 </div>
