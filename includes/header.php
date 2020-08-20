@@ -40,13 +40,13 @@
 </head>
 
 <body>
-    <!--[if lt IE 8]>
+    <!-- [if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <![endif] -->
     <!-- preloader area start -->
-    <!-- <div id="preloader">
+    <div id="preloader">
         <div class="loader"></div>
-    </div> -->
+    </div>
     <!-- preloader area end -->
     <!-- page container area start -->
     <div class="page-container">
@@ -65,12 +65,7 @@
                                 <a href="index.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Form 1</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-product-hunt"></i> <span>Form 2</span></a>
-                                <ul class="collapse">
-                                    <li><a href="SellingForm2.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Selling</span></a>
-                                    </li>
-                                    <li><a href="BuyingForm2.php" aria-expanded="true"><i class="fa fa-circle fs_i"></i><span class="menu-title">Buying</span></a></li>
-                                </ul>
+                                <a href="Form2.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Form 2</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-product-hunt"></i> <span>Invoices</span></a>
