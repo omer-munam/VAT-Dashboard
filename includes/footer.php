@@ -1,7 +1,7 @@
 </div>
 <footer>
     <div class="footer-area">
-        <p>© 2020 VAT</p>
+        <p>© 2020 VAT Calculator</p>
     </div>
 </footer>
 <!-- offset area start -->
