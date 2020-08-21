@@ -75,7 +75,7 @@
                   }
               ?>
             </div>
-            <canvas  height="100"></canvas>
+            <canvas  height="10"></canvas>
           </div>
         </div>
 
@@ -122,23 +122,35 @@
                           $templateProcessor->setValue('current_date', date('Y-m-d'));
                           $templateProcessor->setValue('tax', $tax);
                           $templateProcessor->setValue('VAT_pin', $_SESSION['VAT_pin']);
+                          $templateProcessor->setValue('VAT_Account', $_SESSION['id']);
 
                           $file = $_SESSION['name'].'-TAX_DECLARATION_FORM-'.date('Y-m-d').'.docx';
                           $templateProcessor->saveAs($file);
-
-                          // echo "<a href=\"MyWordFile.docx\">Download Word file</a>";
                       }
                   }
               ?>
             </div>
-            <canvas  height="100"></canvas>
+            <!-- <iframe src='https://docs.google.com/viewer?url=/<?php echo $file ?>&embedded=true' frameborder='0'></iframe> -->
+            
+            <canvas  height="10"></canvas>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container mt-3 d-flex justify-content-center">
-      <a href="<?php echo $file ?>" class="btn btn-secondary">Download TAX Declaration Form</a>
+    <div class="container single-report mt-3">
+      <div class="row justify-content-md-center">
+        <div class="col-6 mt-5">
+          <p class="h6">For the period of <strong><?php echo date('Y-m-d', strtotime("-3 Months")) ?></strong> to <strong><?php echo date('Y-m-d') ?></strong></p>
+          <p class="h6">Total Amount: <?php echo $total_amount ?></p>
+          <p class="h6">Tax: <?php echo $tax ?></p>
+          <p class="h6">VAT PIN: <?php echo $_SESSION['VAT_pin'] ?></p>
+          <p class="h6">VAT Account No: <?php echo $_SESSION['id'] ?></p>
+        </div>
+      </div>
+      <div class="container mt-3 mb-4 d-flex justify-content-center">
+        <a href="<?php echo $file ?>" class="btn btn-secondary">Download TAX Declaration Form</a>
+      </div>
     </div>
   </div>
   </div>
