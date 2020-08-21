@@ -725,6 +725,20 @@ ul.breadcrumbs {
     position: relative;
 }
 
+.down_btn {
+    margin-right: -30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    background: -webkit-linear-gradient(left, #e47226 0%, #873e2d 100%);
+    background: linear-gradient(to right, #e47226 0%, #873e2d 100%);
+}
+
 .user-profile img.avatar {
     height: 35px;
     width: 35px;
@@ -841,7 +855,7 @@ ul.breadcrumbs {
 .header-title {
     font-family: 'Lato', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0;
     color: #333;
     text-transform: capitalize;
@@ -849,15 +863,46 @@ ul.breadcrumbs {
 }
 
 .single-report p {
-    font-size: 15px;
-    font-weight: 700;
-    color: #565656;
-    background: #ececec;
-    letter-spacing: 0;
-    padding: 0 9px;
-    height: 20px;
-    line-height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    /* color: #565656; */
+    /* background: #ececec; */
+    /* letter-spacing: 0; */
+    /* padding: 0 9px; */
+    /* height: 20px; */
+    /* line-height: 20px; */
 }
+
+.text_box {
+    width: 100px;
+    background: white;
+    border: 1px solid greenyellow;
+    padding: 3px 5px;
+}
+
+.text_box2 {
+    width: 120px;
+    height: 40px;
+    background: #4472C4;
+    border: 1px solid #2F528F;
+    padding: 3px 5px;
+}
+
+.receipt-stamp {
+    background: white;
+    border: 1px solid greenyellow;
+    padding: 5px;
+    position: relative;
+}
+
+.receipt-stamp p {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+}
+
+
 
 .single-report h2 {
     font-size: 26px;

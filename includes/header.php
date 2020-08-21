@@ -65,7 +65,7 @@
                                 <a href="index.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Form 1</span></a>
                             </li>
                             <li>
-                                <a href="Form2.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Form 2</span></a>
+                                <a href="Form2.php" aria-expanded="false"><i class="fa fa-dashboard"></i><span>Tax Declaration Form</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-product-hunt"></i> <span>Invoices</span></a>
