@@ -87,7 +87,7 @@
         <div class="row align-items-center">
             <div class="col-sm-6">
                 <div class="breadcrumbs-area clearfix">
-                    <!-- <h4 class="page-title pull-left">Dashboard</h4> -->
+                    <h5 class="page-title pull-left">TAX DECLARATION FORM</h5>
                     <ul class="breadcrumbs pull-left">
                         <li><a href="index.php">Home</a></li>
                         <li><span>Tax Declaration Form</span></li>

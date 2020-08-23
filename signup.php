@@ -216,12 +216,12 @@ class Signup
                         </div>
 
                         <div id="password_div">
-                        <div class="form-gp">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" id="exampleInputPassword1">
-                            <i class="ti-lock"></i>
-                            <div id="password_error"></div>
-                        </div>
+                            <div class="form-gp">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name="password" id="exampleInputPassword1">
+                                <i class="ti-lock"></i>
+                                <div id="password_error"></div>
+                            </div>
                         </div>
 
                         <div id="password1_div">
