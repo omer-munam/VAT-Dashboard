@@ -108,7 +108,8 @@
                            <td style="background-color: #ffffff"><?php echo  $inv_date ?></td>
 
                             <td style="background-color: #ffffff"><!-- Button trigger modal -->
-                              <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete">
+                              <!-- <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete"> -->
+                              <a class="btn btn-danger btn-xs" href="delete.php?id='<?php echo $id?>'">Delete</a>
                             </td>
                         </tr>
 <?php }} ?>

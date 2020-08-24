@@ -8,23 +8,24 @@
         die();
     }
 
-    if (isset($_POST["actionbtndecline"])) {
-        $id = $_POST['nameram'];
-        $query = "DELETE FROM invoices WHERE id='$id'";
+    // if (isset($_POST["actionbtndecline"])) {
+    //     $id = $_POST['nameram'];
+    //     echo $id;
+    //     $query = "DELETE FROM invoices WHERE id='$id'";
 
-        if ($conn->query($query)==true) {
-            echo "<script>  setTimeout(function() {
-                $.bootstrapGrowl('The Data Has Been Deleted Successfully', {
-                    type: 'danger',
-                    align: 'right',
-                    width: 400,
-                    stackup_spacing: 30
-                });
-            }, 1000);</script>";
-        } else {
-            echo "error".$query."<br>".$conn->error;
-        }
-    }
+    //     if ($conn->query($query)==true) {
+    //         echo "<script>  setTimeout(function() {
+    //             $.bootstrapGrowl('The Data Has Been Deleted Successfully', {
+    //                 type: 'danger',
+    //                 align: 'right',
+    //                 width: 400,
+    //                 stackup_spacing: 30
+    //             });
+    //         }, 1000);</script>";
+    //     } else {
+    //         echo "error".$query."<br>".$conn->error;
+    //     }
+    // }
     include('includes/header.php');
 ?>
 <!-- page title area start -->
@@ -99,7 +100,8 @@
                                 <td style="background-color: #ffffff"><?php echo  $inv_date ?></td>
 
                                 <td style="background-color: #ffffff"><!-- Button trigger modal -->
-                                    <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete">
+                                    <!-- <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete"> -->
+                                    <a class="btn btn-danger btn-xs" href="delete.php?id='<?php echo $id?>'">Delete</a>
                                 </td>
                             </tr>
                             <?php }} ?>
