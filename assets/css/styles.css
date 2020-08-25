@@ -874,7 +874,7 @@ ul.breadcrumbs {
 }
 
 .text_box {
-    width: 100px;
+    width: 100px !important;
     background: white;
     border: 1px solid greenyellow;
     padding: 3px 5px;
@@ -893,6 +893,12 @@ ul.breadcrumbs {
     border: 1px solid greenyellow;
     padding: 5px;
     position: relative;
+}
+
+.office-use {
+    background: white;
+    border: 1px solid greenyellow;
+    padding: 5px;
 }
 
 .receipt-stamp p {
