@@ -98,7 +98,7 @@ include('includes/header.php');
                                 <th> Date of Birth </th>
                                 <th> Occupation </th>
                                 <th> Earning </th>
-                                <th colspan="2"> Action </th>
+                                <th> Action </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,11 +128,11 @@ include('includes/header.php');
                                 <td style="background-color: #ffffff"><?php echo  $dob ?></td>
                                 <td style="background-color: #ffffff"><?php echo  $occupation ?></td>
                                 <td style="background-color: #ffffff"><?php echo  $earnings ?></td>
-                                <td style="background-color: #ffffff"><!-- Button trigger modal -->
+                                <!-- <td style="background-color: #ffffff"><!-- Button trigger modal -->
                                     
-                                    <!-- <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete"> -->
-                                    <a class="btn btn-danger btn-xs" href="deleteUser.php?id='<?php echo $id?>'">Delete</a>
-                                </td>
+                                    <!-- <input type="submit"  name="actionbtndecline" class="btn btn-danger btn-xs" value="Delete"> 
+                                    <a class="btn btn-danger btn-xs" href="deleteUser.php?id='?php echo $id?>'">Delete</a>
+                                </td> -->
 
                                 <td style="background-color: #ffffff"><!-- Button trigger modal -->
                                     <div data-toggle="modal" href="#myModal" data-userid="<?php echo $id; ?>" class="btn btn-primary btn-xs">Change Password</div>

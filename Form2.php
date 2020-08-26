@@ -9,6 +9,10 @@
   }
 
   $tax = 0;
+  $taxB = 0;
+  $taxS = 0;
+  $total_amountS = 0;
+  $total_amountB = 0;
 
   mysqli_set_charset($conn, 'utf8');
   $user_id =  $_SESSION['id'];
@@ -18,7 +22,6 @@
   if ($result) {
       $row_cnt = $result->num_rows;
       if ($row_cnt>0) {
-          $total_amountS = 0;
           while ($row=$result->fetch_assoc()) {
               $id = $row["id"];
               $inv_num =  $row['inv_number'];
@@ -45,7 +48,6 @@
   if ($result) {
       $row_cnt = $result->num_rows;
       if ($row_cnt>0) {
-          $total_amountB = 0;
           while ($row=$result->fetch_assoc()) {
               $id = $row["id"];
               $inv_num =  $row['inv_number'];
@@ -61,23 +63,26 @@
           // echo "<p class=\"h6\">No. of products sold: ". $row_cnt ."</p>";
           // echo "<p class=\"h6\">Total Amount: ". $total_amountB ."</p>";
           // echo "<p class=\"h6\">Tax to be received: ". $taxB ."</p>";
-
-          $tax = $taxS - $taxB;
-          $total_amount = $total_amountB + $total_amountS;
-          
-
-          $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('TAX_DECLARATION_FORM.docx');
-          $templateProcessor->setValue('start_date', date('Y-m-d', strtotime("-3 Months")));
-          $templateProcessor->setValue('end_date', date('Y-m-d'));
-          $templateProcessor->setValue('current_date', date('Y-m-d'));
-          $templateProcessor->setValue('tax', $tax);
-          $templateProcessor->setValue('VAT_pin', $_SESSION['VAT_pin']);
-          $templateProcessor->setValue('VAT_Account', $_SESSION['id']);
-
-          $file = $_SESSION['name'].'-TAX_DECLARATION_FORM-'.date('Y-m-d').'.docx';
-          $templateProcessor->saveAs($file);
       }
   }
+
+  $tax = $taxS - $taxB;
+  $total_amount = $total_amountB + $total_amountS;
+  
+
+  $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('TAX_DECLARATION_FORM.docx');
+  $templateProcessor->setValue('start_date', date('Y-m-d', strtotime("-3 Months")));
+  $templateProcessor->setValue('end_date', date('Y-m-d'));
+  $templateProcessor->setValue('current_date', date('Y-m-d'));
+  $templateProcessor->setValue('tot_s', $total_amountS);
+  $templateProcessor->setValue('tot_b', $total_amountB);
+  $templateProcessor->setValue('t_sb', ($total_amountS - $total_amountB));
+  $templateProcessor->setValue('tax', $tax);
+  $templateProcessor->setValue('VAT_pin', $_SESSION['VAT_pin']);
+  $templateProcessor->setValue('VAT_Account', $_SESSION['id']);
+
+  $file = $_SESSION['name'].'-TAX_DECLARATION_FORM-'.date('Y-m-d').'.docx';
+  $templateProcessor->saveAs($file);
 
   include('includes/header.php');
 ?>
@@ -191,43 +196,43 @@
                       <tr>
                         <td>VAT due at this time on the outflows</td>
                         <td>1</td>
-                        <td></td>
+                        <td><?php echo $total_amountS ?></td>
                         <td></td>
                       </tr>
                       <tr>
                         <td>VAT due at this time on acquisitions relating to other Member States of the European Union</td>
                         <td>2</td>
-                        <td></td>
+                        <td>0</td>
                         <td></td>
                       </tr>
                       <tr>
                         <td><b>Total VAT due (THE SUMMARY OF SQUARES 1 AND 2)</b></td>
                         <td>3</td>
-                        <td></td>
+                        <td><?php echo $total_amountS ?></td>
                         <td></td>
                       </tr>
                       <tr>
                         <td>VAT currently deductible on purchases and other inputs (including acquisitions by other Member States of the European Union)</td>
                         <td>4</td>
-                        <td></td>
+                        <td><?php echo $total_amountB ?></td>
                         <td></td>
                       </tr>
                       <tr>
                         <td class="text-white" style="background: #4472C4;">VAT Payable or refundable (Subtraction between boxes 3 and 4)</td>
                         <td>5</td>
-                        <td></td>
+                        <td><?php echo ($total_amountS - $total_amountB) ?></td>
                         <td></td>
                       </tr>
                       <tr>
                         <td>Total value of outputs (Excluding VAT)<b> (Including tde amount of squares 8A + 8B, 9 AND 11B)</b></td>
                         <td>6</td>
-                        <td></td>
+                        <td><?php echo $total_amountS ?></td>
                         <td></td>
                       </tr>
                       <tr>
                         <td>Total value of inputs (Excluding VAT) <b>(Including the amount of squares 11A + 11B)</b></td>
                         <td>7</td>
-                        <td></td>
+                        <td><?php echo $total_amountB ?></td>
                         <td></td>
                       </tr>
                       <tr>
